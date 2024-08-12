@@ -1,5 +1,73 @@
 @import './fonts-var-mixin';
 
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px 100px;
+  z-index: 1000;
+  @include flex-align;
+  justify-content: space-between;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+  h1 {
+    color: $white;
+    @include font-header;
+    transition: color 0.3s ease;
+  }
+  .hamburger {
+    width: 45px;
+    height: 30px;
+    position: relative;
+    transform: rotate(0deg);
+    transition: .8s ease-in-out;
+    cursor: pointer;
+    &.active {
+      transform: translateX(50px);
+    }
+    span {
+      display: block;
+      position: absolute;
+      height: 5px;
+      width: 100%;
+      background: $white;
+      border-radius: 9px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: transform 0.25s ease-in-out, background-color 0.3s ease;
+      &:nth-child(1) {
+        top: 0px;
+        transform-origin: left center;
+      }
+      &:nth-child(2) {
+        top: 15px;
+        transform-origin: left center;
+      }
+      &:nth-child(3) {
+        top: 30px;
+        transform-origin: left center;
+      }
+    }
+  }
+  .hamburger.open span:nth-child(1) {
+    transform: rotate(45deg);
+    top: -5px;
+    left: 8px;
+    background: $black;
+  }
+  .hamburger.open span:nth-child(2) {
+    width: 0%;
+    opacity: 0;
+  }
+  .hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 28px;
+    left: 8px;
+    background: $black;
+  }
+}
 .showcase {
   position: fixed;
   top: 0;
@@ -8,7 +76,7 @@
   min-height: 100vh;
   padding: 100px;
   @include flex-align;
-  background-color: #111;
+  background-color: $black;
   transition: 1.2s ease;
   z-index: 2;
   &.active {
@@ -24,71 +92,6 @@
     opacity: 0.8;
     z-index: 1;
   }
-  header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 40px 100px;
-    z-index: 1000;
-    @include flex-align;
-    justify-content: space-between;
-    h1 {
-      color: #fff;
-      @include font-header;
-    }
-    .hamburger {
-      width: 45px;
-      height: 30px;
-      position: relative;
-      transform: rotate(0deg);
-      transition: .8s ease-in-out;
-      cursor: pointer;
-      &.active {
-        transform: translateX(350px);
-      }
-      span {
-        display: block;
-        position: absolute;
-        height: 5px;
-        width: 100%;
-        background: #fff;
-        border-radius: 9px;
-        opacity: 1;
-        left: 0;
-        transform: rotate(0deg);
-        transition: .25s ease-in-out;
-        &:nth-child(1) {
-          top: 0px;
-          transform-origin: left center;
-        }
-        &:nth-child(2) {
-          top: 15px;
-          transform-origin: left center;
-        }
-        &:nth-child(3) {
-          top: 30px;
-          transform-origin: left center;
-        }
-      }
-    }
-    .hamburger.open span:nth-child(1) {
-      transform: rotate(45deg);
-      top: -5px;
-      left: 8px;
-      background: #111;
-    }
-    .hamburger.open span:nth-child(2) {
-      width: 0%;
-      opacity: 0;
-    }
-    .hamburger.open span:nth-child(3) {
-      transform: rotate(-45deg);
-      top: 28px;
-      left: 8px;
-      background: #111;
-    }
-  }
   .overlay {
     position: absolute;
     top: 0;
@@ -103,13 +106,13 @@
     z-index: 10;
     h2 {
       font-size: 5em;
-      color: #fff;
+      color: $white;
       line-height: 1em;
       text-transform: uppercase;
     }
     .intro-text-info {
       font-size: 1.1em;
-      color: #fff;
+      color: $white;
       margin: 20px 0;
       max-width: 700px;
     }
@@ -120,7 +123,7 @@
       padding: 10px 30px;
       text-decoration: none;
       margin-top: 10px;
-      color: #fff;
+      color: $white;
       letter-spacing: 2px;
       transition: 0.2s;
       &:hover {
@@ -144,7 +147,7 @@
       a {
         text-decoration: none;
         font-size: 24px;
-        color: #111;
+        color: $black;
         &:hover {
           color: $green;
         }

@@ -1,11 +1,26 @@
 const menuToggle = document.querySelector('.hamburger');
 const showcase = document.querySelector('.showcase');
 const weatherContainer = document.querySelector('.weather-container');
+const heading = document.querySelector('header h1');
+const burgerSpan = document.querySelectorAll('.hamburger span');
 
 menuToggle.addEventListener('click', () => {
   menuToggle.classList.toggle('active');
   menuToggle.classList.toggle('open');
   showcase.classList.toggle('active');
+  weatherContainer.classList.toggle('active');
+
+  if (weatherContainer.classList.contains('active')) {
+    burgerSpan.forEach((span) => {
+      const newSpan = span;
+      newSpan.style.backgroundColor = '#333';
+    });
+  } else {
+    burgerSpan.forEach((span) => {
+      const newSpan = span;
+      newSpan.style.backgroundColor = '#fff';
+    });
+  }
 });
 
 window.addEventListener('scroll', () => {
@@ -18,28 +33,28 @@ window.addEventListener('scroll', () => {
   const endReveal = showcaseHeight;
 
   if (scrollPosition >= startReveal && scrollPosition <= endReveal) {
-    // Calculate the progress of the scroll between startReveal and endReveal
-    const progress = (scrollPosition - startReveal) / (endReveal - startReveal);
-
-    // Update the transform and opacity based on progress
-    weatherContainer.style.transform = `translateY(${100 - progress * 100}%)`;
-    weatherContainer.style.opacity = progress;
-  } else if (scrollPosition > endReveal) {
-    // Once fully visible, the second section stays in place
-    weatherContainer.style.transform = 'translateY(0)';
-    weatherContainer.style.opacity = 1;
-
-    // Pin the weather container to the top
-    weatherContainer.style.position = 'fixed';
-    weatherContainer.style.top = 0;
-    weatherContainer.style.left = 0;
-    weatherContainer.style.width = '100%';
+    if (scrollPosition > endReveal) {
+      weatherContainer.style.transform = 'translateY(0)';
+      weatherContainer.style.position = 'fixed';
+      weatherContainer.style.top = 0;
+      weatherContainer.style.left = 0;
+      weatherContainer.style.width = '100%';
+    } else {
+      weatherContainer.style.transform = 'translateY(100%)';
+      weatherContainer.style.position = 'relative';
+    }
+  }
+  if (scrollPosition >= startReveal) {
+    heading.style.color = '#333';
+    burgerSpan.forEach((span) => {
+      const newSpan = span;
+      newSpan.style.backgroundColor = '#333';
+    });
   } else {
-    // Reset if scrolling back up
-    weatherContainer.style.transform = 'translateY(100%)';
-    weatherContainer.style.opacity = 0;
-
-    // Reset the fixed positioning
-    weatherContainer.style.position = 'relative';
+    heading.style.color = '#fff';
+    burgerSpan.forEach((span) => {
+      const newSpan = span;
+      newSpan.style.backgroundColor = '#fff';
+    });
   }
 });

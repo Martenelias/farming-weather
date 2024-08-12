@@ -21,19 +21,30 @@ const generateHtmlFooter = () => {
   return htmlFooter;
 };
 
-const generateHtmlResponse = () => {
+const generateHtmlResponse = (weather = null, error = null) => {
   const htmlHeader = generateHtmlHeader();
   const htmlFooter = generateHtmlFooter();
+  const weatherContent = weather
+    ? `
+      <div class="card">
+        <p><i class="fas fa-thermometer-half"></i> ${weather.main.temp}°C</p>
+        <p><i class="fas fa-cloud"></i> ${weather.weather[0].main}</p>
+        <p><i class="fas fa-map-marker-alt"></i> ${weather.name}, ${weather.sys.country}</p>
+      </div>`
+    : '';
+
+  const errorContent = error ? `<p class="error">${error}</p>` : '';
+
   const htmlContent = `
-    <section class="showcase">
-      <header>
+    <header>
       <h1>FARM WEATHER</h1>
       <div class="hamburger">
         <span></span>
         <span></span>
         <span></span>
       </div>
-      </header>
+    </header>
+    <section class="showcase">
       <video src="tractor-intro.mp4" muted loop autoplay></video>
       <div class="overlay"></div>
       <div class="intro-text">
@@ -45,8 +56,12 @@ const generateHtmlResponse = () => {
     <section class="weather-container">
       <div class="content">
         <h2>Weather Data</h2>
-        <p>This is the second section content.</p>
-        <!-- Add more content as needed -->
+        <form action="/" method="get">
+          <input type="text" name="city" placeholder="Enter city name" />
+          <button type="submit">Get Weather</button>
+        </form>
+        ${errorContent}
+        ${weatherContent}
       </div>
     </section>
     <div class="menu">
