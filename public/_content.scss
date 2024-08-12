@@ -1,0 +1,29 @@
+@import './fonts-var-mixin';
+@import './header';
+
+.weather-container {
+  position: relative;
+  margin: 0;
+  padding: 100px 0;
+  background-color: #fff;
+  z-index: 20;
+  min-height: 100vh;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  .content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+    
+    h2 {
+      font-size: 3em;
+      color: #333;
+    }
+    
+    p {
+      font-size: 1.5em;
+      color: #666;
+    }
+  }
+}

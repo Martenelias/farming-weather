@@ -42,6 +42,13 @@ const generateHtmlResponse = () => {
         <a href="#weather">EXPLORE</a>
       </div>
     </section>
+    <section class="weather-container">
+      <div class="content">
+        <h2>Weather Data</h2>
+        <p>This is the second section content.</p>
+        <!-- Add more content as needed -->
+      </div>
+    </section>
     <div class="menu">
       <ul>
         <li><a href="#">Home</a></li>
