@@ -25,7 +25,30 @@ const generateHtmlResponse = () => {
   const htmlHeader = generateHtmlHeader();
   const htmlFooter = generateHtmlFooter();
   const htmlContent = `
-    <h1>Farming App</h1>
+    <section class="showcase">
+      <header>
+      <h1>FARM WEATHER</h1>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      </header>
+      <video src="tractor-intro.mp4" muted loop autoplay></video>
+      <div class="overlay"></div>
+      <div class="intro-text">
+        <h2>Weather app for Farmers</h2>
+        <p class="intro-text-info">Weather app is made for farmers to keep track on oncoming weather, so they can plan their work.</p>
+        <a href="#weather">EXPLORE</a>
+      </div>
+    </section>
+    <div class="menu">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Weather</a></li>
+      </ul>
+    </div>
   `;
   const html = `
     ${htmlHeader}
