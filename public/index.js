@@ -1,7 +1,6 @@
 const menuToggle = document.querySelector('.hamburger');
 const showcase = document.querySelector('.showcase');
 const weatherContainer = document.querySelector('.weather-container');
-const heading = document.querySelector('header h1');
 const burgerSpan = document.querySelectorAll('.hamburger span');
 
 menuToggle.addEventListener('click', () => {
@@ -43,18 +42,5 @@ window.addEventListener('scroll', () => {
       weatherContainer.style.transform = 'translateY(100%)';
       weatherContainer.style.position = 'relative';
     }
-  }
-  if (scrollPosition >= startReveal) {
-    heading.style.color = '#333';
-    burgerSpan.forEach((span) => {
-      const newSpan = span;
-      newSpan.style.backgroundColor = '#333';
-    });
-  } else {
-    heading.style.color = '#fff';
-    burgerSpan.forEach((span) => {
-      const newSpan = span;
-      newSpan.style.backgroundColor = '#fff';
-    });
   }
 });

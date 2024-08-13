@@ -16,15 +16,12 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: transparent;
-  transition: background-color 0.3s ease;
 }
 header h1 {
   color: #fff;
   font-family: "Rowdies", sans-serif;
   font-weight: 700;
   font-style: normal;
-  transition: color 0.3s ease;
 }
 header .hamburger {
   width: 45px;
@@ -47,7 +44,7 @@ header .hamburger span {
   opacity: 1;
   left: 0;
   transform: rotate(0deg);
-  transition: transform 0.25s ease-in-out, background-color 0.3s ease;
+  transition: transform 0.25s ease-in-out;
 }
 header .hamburger span:nth-child(1) {
   top: 0px;
@@ -180,15 +177,12 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: transparent;
-  transition: background-color 0.3s ease;
 }
 header h1 {
   color: #fff;
   font-family: "Rowdies", sans-serif;
   font-weight: 700;
   font-style: normal;
-  transition: color 0.3s ease;
 }
 header .hamburger {
   width: 45px;
@@ -211,7 +205,7 @@ header .hamburger span {
   opacity: 1;
   left: 0;
   transform: rotate(0deg);
-  transition: transform 0.25s ease-in-out, background-color 0.3s ease;
+  transition: transform 0.25s ease-in-out;
 }
 header .hamburger span:nth-child(1) {
   top: 0px;
@@ -337,8 +331,9 @@ header .hamburger.open span:nth-child(3) {
 .weather-container {
   position: relative;
   margin: 0;
-  padding: 100px 0;
-  background-color: #fff;
+  padding: 150px 0;
+  background-color: #333;
+  color: #fff;
   z-index: 20;
   height: 100vh;
   right: 0;
@@ -349,17 +344,56 @@ header .hamburger.open span:nth-child(3) {
   right: 300px;
 }
 .weather-container .content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
 }
-.weather-container .content h2 {
-  font-size: 3em;
-  color: #333;
+.weather-container .content form {
+  display: flex;
+  justify-content: center;
 }
-.weather-container .content p {
-  font-size: 1.5em;
-  color: #333;
+.weather-container .content form input {
+  height: 40px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  padding: 10px;
+}
+.weather-container .content form button {
+  height: 40px;
+  width: 40px;
+  background-color: #008a31;
+  color: #fff;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+.weather-container .content form button:hover {
+  background-color: #fff;
+  color: #008a31;
+}
+.weather-container .content h2 .fa-map-marker-alt {
+  color: #008a31;
+}
+.weather-container .content .data-container {
+  border: 1px solid white;
+  width: 500px;
+}
+.weather-container .content .data-container .today {
+  border: 1px solid green;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+.weather-container .content .data-container .today .today-type {
+  border: 1px solid white;
+  height: 100%;
+}
+.weather-container .content .data-container .today .today-type .main-temp {
+  font-size: 30px;
 }
 
 * {

@@ -24,6 +24,7 @@ app.get('/', async (req, res) => {
     if (city) {
       const response = await axios.get(APIUrl);
       weather = response.data;
+      console.log(weather);
     }
   } catch (err) {
     error = 'Error, Please try again';

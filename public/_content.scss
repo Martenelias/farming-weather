@@ -4,8 +4,9 @@
 .weather-container {
   position: relative;
   margin: 0;
-  padding: 100px 0;
-  background-color: $white;
+  padding: 150px 0;
+  background-color: $black;
+  color: $white;
   z-index: 20;
   height: 100vh;
   right: 0;
@@ -15,18 +16,53 @@
     right: 300px;
   }
   .content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 50px;
-    
-    h2 {
-      font-size: 3em;
-      color: $black;
+    @include flex-align;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    form {
+      display: flex;
+      justify-content: center;
+      input {
+        height: 40px;
+        border: none;
+        border-radius: 5px 0 0 5px;
+        padding: 10px;
+      }
+      button {
+        height: 40px;
+        width: 40px;
+        background-color: $green;
+        color: $white;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        transition: 0.5s ease;
+        &:hover {
+          background-color: $white;
+          color: $green;
+        }
+      }
     }
-    
-    p {
-      font-size: 1.5em;
-      color: $black;
+    h2 .fa-map-marker-alt {
+      color: $green;
+    }
+    .data-container {
+      border: 1px solid white;
+      width: 500px;
+      .today {
+        border: 1px solid green;
+        @include flex-align;
+        justify-content: space-between;
+        height: 100%;
+        .today-type {
+          border: 1px solid white;
+          height: 100%;
+          .main-temp {
+            font-size: 30px;
+          }
+        }
+      }
     }
   }
 }

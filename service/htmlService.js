@@ -24,12 +24,26 @@ const generateHtmlFooter = () => {
 const generateHtmlResponse = (weather = null, error = null) => {
   const htmlHeader = generateHtmlHeader();
   const htmlFooter = generateHtmlFooter();
+  const iconUrl = 'https://openweathermap.org/img/wn/';
+  const iconEndpoint = '@2x.png';
+
+  const temp = Math.round(weather.main.temp);
+  const tempMax = Math.round(weather.main.temp_max);
+  const tempMin = Math.round(weather.main.temp_min);
+
   const weatherContent = weather
     ? `
-      <div class="card">
-        <p><i class="fas fa-thermometer-half"></i> ${weather.main.temp}°C</p>
-        <p><i class="fas fa-cloud"></i> ${weather.weather[0].main}</p>
-        <p><i class="fas fa-map-marker-alt"></i> ${weather.name}, ${weather.sys.country}</p>
+      <div class="today">
+        <div class="today-type">
+          <img src="${iconUrl}${weather.weather[0].icon}${iconEndpoint}" alt="weather icon" />
+          <p><i class="fa-solid fa-droplet"></i>&nbsp;${weather.main.humidity}%</p>
+          <p><i class="fa-solid fa-wind"></i>&nbsp;${weather.wind.speed}</p>
+        </div>
+        <div class="today-type">
+          <p class="main-temp">${temp}°C</p>
+          <p><i class="fa-solid fa-temperature-arrow-up"></i>&nbsp;${tempMax}°C</p>
+          <p><i class="fa-solid fa-temperature-arrow-down"></i>&nbsp;${tempMin}°C</p>
+        </div>
       </div>`
     : '';
 
@@ -55,13 +69,15 @@ const generateHtmlResponse = (weather = null, error = null) => {
     </section>
     <section class="weather-container">
       <div class="content">
-        <h2>Weather Data</h2>
         <form action="/" method="get">
           <input type="text" name="city" placeholder="Enter city name" />
-          <button type="submit">Get Weather</button>
+          <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
-        ${errorContent}
-        ${weatherContent}
+        <h2><i class="fas fa-map-marker-alt"></i> ${weather.name}, ${weather.sys.country}</h2>
+        <div class="data-container">
+          ${errorContent}
+          ${weatherContent}
+        </div>
       </div>
     </section>
     <div class="menu">

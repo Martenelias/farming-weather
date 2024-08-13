@@ -9,12 +9,9 @@ header {
   z-index: 1000;
   @include flex-align;
   justify-content: space-between;
-  background-color: transparent;
-  transition: background-color 0.3s ease;
   h1 {
     color: $white;
     @include font-header;
-    transition: color 0.3s ease;
   }
   .hamburger {
     width: 45px;
@@ -36,7 +33,7 @@ header {
       opacity: 1;
       left: 0;
       transform: rotate(0deg);
-      transition: transform 0.25s ease-in-out, background-color 0.3s ease;
+      transition: transform 0.25s ease-in-out;
       &:nth-child(1) {
         top: 0px;
         transform-origin: left center;
