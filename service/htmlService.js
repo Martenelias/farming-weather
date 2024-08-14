@@ -27,27 +27,50 @@ const generateHtmlResponse = (weather = null, error = null) => {
   const iconUrl = 'https://openweathermap.org/img/wn/';
   const iconEndpoint = '@2x.png';
 
-  const temp = Math.round(weather.main.temp);
-  const tempMax = Math.round(weather.main.temp_max);
-  const tempMin = Math.round(weather.main.temp_min);
+  let weatherContent = '';
+  let hourlyWeatherContent = '';
 
-  const weatherContent = weather
-    ? `
+  if (weather && weather.list && weather.list.length > 0) {
+    // Extract current weather from the first item in the list
+    const currentWeather = weather.list[0];
+    const temp = Math.round(currentWeather.main.temp);
+    const tempMax = Math.round(currentWeather.main.temp_max);
+    const tempMin = Math.round(currentWeather.main.temp_min);
+
+    weatherContent = `
       <div class="today">
         <div class="today-type">
-          <img src="${iconUrl}${weather.weather[0].icon}${iconEndpoint}" alt="weather icon" />
-          <p><i class="fa-solid fa-droplet"></i>&nbsp;${weather.main.humidity}%</p>
-          <p><i class="fa-solid fa-wind"></i>&nbsp;${weather.wind.speed}</p>
+          <div>
+            <img src="${iconUrl}${currentWeather.weather[0].icon}${iconEndpoint}" alt="weather icon" />
+            <p class="main-temp">${temp}°</p>
+          </div>
+          <p>${currentWeather.weather[0].description}</p>
         </div>
-        <div class="today-type">
-          <p class="main-temp">${temp}°C</p>
+        <div class="today-detail">
+          <p><i class="fa-solid fa-droplet"></i>&nbsp;${currentWeather.main.humidity}%</p>
+          <p><i class="fa-solid fa-wind"></i>&nbsp;${currentWeather.wind.speed}&nbsp;m/s</p>
           <p><i class="fa-solid fa-temperature-arrow-up"></i>&nbsp;${tempMax}°C</p>
           <p><i class="fa-solid fa-temperature-arrow-down"></i>&nbsp;${tempMin}°C</p>
         </div>
-      </div>`
-    : '';
+      </div>`;
 
-  const errorContent = error ? `<p class="error">${error}</p>` : '';
+    // Generate HTML for the next 5 hours
+    for (let i = 1; i <= 5; i += 1) {
+      const hourlyWeather = weather.list[i];
+      const hourlyTemp = Math.round(hourlyWeather.main.temp);
+      hourlyWeatherContent += `
+        <div class="hourly-weather">
+          <p>${hourlyWeather.dt_txt.split(' ')[1].substring(0, 5)}</p>
+          <img src="${iconUrl}${hourlyWeather.weather[0].icon}${iconEndpoint}" alt="weather icon" />
+          <p>${hourlyTemp}°</p>
+          <p><i class="fa-solid fa-droplet"></i>&nbsp;${hourlyWeather.main.humidity}%</p>
+        </div>`;
+    }
+  } else if (error) {
+    weatherContent = `<p class="error">${error}</p>`;
+  } else {
+    weatherContent = '<p class="error">Weather data is not available. Please try again.</p>';
+  }
 
   const htmlContent = `
     <header>
@@ -67,24 +90,31 @@ const generateHtmlResponse = (weather = null, error = null) => {
         <a href="#weather">EXPLORE</a>
       </div>
     </section>
-    <section class="weather-container">
+    <section id="weather" class="weather-container">
       <div class="content">
         <form action="/" method="get">
           <input type="text" name="city" placeholder="Enter city name" />
           <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
-        <h2><i class="fas fa-map-marker-alt"></i> ${weather.name}, ${weather.sys.country}</h2>
-        <div class="data-container">
-          ${errorContent}
-          ${weatherContent}
+        <h2><i class="fas fa-map-marker-alt"></i> ${weather?.city?.name || 'City'}, ${weather?.city?.country || 'Country'}</h2>
+        <div class="hour-weather-container">
+          <div class="data-container">
+            ${weatherContent}
+          </div>
+          <div class="hour-weather">
+            ${hourlyWeatherContent}
+          </div>
         </div>
       </div>
+    </section>
+    <section id="about" class="about-container">
+      <h3>About page</h3>
     </section>
     <div class="menu">
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Weather</a></li>
+        <li><a href="#weather">Weather</a></li>
+        <li><a href="#about">About</a></li>
       </ul>
     </div>
   `;

@@ -377,23 +377,76 @@ header .hamburger.open span:nth-child(3) {
 .weather-container .content h2 .fa-map-marker-alt {
   color: #008a31;
 }
-.weather-container .content .data-container {
-  border: 1px solid white;
-  width: 500px;
+.weather-container .content .hour-weather-container {
+  box-shadow: 5px 5px 15px #fff;
 }
-.weather-container .content .data-container .today {
-  border: 1px solid green;
+.weather-container .content .hour-weather-container .data-container {
+  padding-bottom: 20px;
+  border-bottom: 2px solid #fff;
+}
+.weather-container .content .hour-weather-container .data-container .today {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   height: 100%;
 }
-.weather-container .content .data-container .today .today-type {
-  border: 1px solid white;
+.weather-container .content .hour-weather-container .data-container .today .today-type {
   height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
-.weather-container .content .data-container .today .today-type .main-temp {
-  font-size: 30px;
+.weather-container .content .hour-weather-container .data-container .today .today-type div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.weather-container .content .hour-weather-container .data-container .today .today-type div .main-temp {
+  font-size: 40px;
+  padding: 35px;
+}
+.weather-container .content .hour-weather-container .data-container .today .today-detail {
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.weather-container .content .hour-weather-container .hour-weather {
+  display: flex;
+  gap: 20px;
+}
+.weather-container .content .hour-weather-container .hour-weather .hourly-weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.weather-container .content .hour-weather-container .hour-weather .hourly-weather img {
+  width: 40px;
+  height: 40px;
+}
+.weather-container .content .hour-weather-container .hour-weather .hourly-weather p {
+  margin: 5px 0;
+  font-size: 12px;
+}
+
+.about-container {
+  position: relative;
+  margin: 0;
+  padding: 150px 0;
+  background-color: green;
+  color: #fff;
+  z-index: 30;
+  height: 100vh;
+  right: 0;
+  transform: translateY(100%);
+  transition: right 1.2s ease, transform 1.2s ease, position 1.2s ease;
+}
+.about-container.active {
+  right: 300px;
 }
 
 * {

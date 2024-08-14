@@ -47,19 +47,56 @@
     h2 .fa-map-marker-alt {
       color: $green;
     }
-    .data-container {
-      border: 1px solid white;
-      width: 500px;
-      .today {
-        border: 1px solid green;
-        @include flex-align;
-        justify-content: space-between;
-        height: 100%;
-        .today-type {
-          border: 1px solid white;
+    .hour-weather-container {
+      box-shadow: 5px 5px 15px $white;
+      .data-container {
+        padding-bottom: 20px;
+        border-bottom: 2px solid $white;
+        .today {
+          @include flex-align;
+          justify-content: center;
           height: 100%;
-          .main-temp {
-            font-size: 30px;
+          .today-type {
+            height: 100%;
+            @include flex-align;
+            flex-direction: column;
+            justify-content: center;
+            div {
+              @include flex-align;
+              justify-content: center;
+              .main-temp {
+                font-size: 40px;
+                padding: 35px;
+              }
+            }
+          }
+          .today-detail {
+            padding: 20px 40px;
+            @include flex-align;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+          }
+        }
+      }
+      .hour-weather {
+        display: flex;
+        gap: 20px;
+        
+        .hourly-weather {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 10px;
+          
+          img {
+            width: 40px;
+            height: 40px;
+          }
+      
+          p {
+            margin: 5px 0;
+            font-size: 12px;
           }
         }
       }

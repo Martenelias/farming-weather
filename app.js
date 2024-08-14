@@ -15,7 +15,7 @@ app.get('/', async (req, res) => {
   const { city } = req.query;
   const apiKey = 'c2f20e0413ede4f94e4210f5ddc00702';
 
-  const APIUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  const APIUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
 
   let weather;
   let error = null;
@@ -24,7 +24,6 @@ app.get('/', async (req, res) => {
     if (city) {
       const response = await axios.get(APIUrl);
       weather = response.data;
-      console.log(weather);
     }
   } catch (err) {
     error = 'Error, Please try again';

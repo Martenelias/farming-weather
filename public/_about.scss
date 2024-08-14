@@ -1,0 +1,15 @@
+.about-container {
+  position: relative;
+  margin: 0;
+  padding: 150px 0;
+  background-color: green;
+  color: $white;
+  z-index: 30;
+  height: 100vh;
+  right: 0;
+  transform: translateY(100%);
+  transition: right 1.2s ease, transform 1.2s ease, position 1.2s ease;
+  &.active {
+    right: 300px;
+  }
+}
