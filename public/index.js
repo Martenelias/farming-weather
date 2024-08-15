@@ -30,28 +30,26 @@ window.addEventListener('scroll', () => {
   const showcaseHeight = showcase.offsetHeight;
   const weatherContainerHeight = weatherContainer.offsetHeight;
 
-  // Calculate when the second section should start appearing
   const startWeatherReveal = showcaseHeight - windowHeight;
   const endWeatherReveal = showcaseHeight + weatherContainerHeight;
 
-  if (scrollPosition >= startWeatherReveal && scrollPosition <= showcaseHeight) {
+  if (scrollPosition <= startWeatherReveal && scrollPosition >= showcaseHeight) {
     weatherContainer.style.transform = 'translateY(0)';
     weatherContainer.style.position = 'fixed';
     weatherContainer.style.top = 0;
     weatherContainer.style.left = 0;
     weatherContainer.style.width = '100%';
-  } else if (scrollPosition > showcaseHeight && scrollPosition <= endWeatherReveal) {
-    weatherContainer.style.position = 'relative';
+  } else if (scrollPosition < showcaseHeight && scrollPosition >= endWeatherReveal) {
+    weatherContainer.style.position = 'fixed';
     weatherContainer.style.transform = 'translateY(0)';
   } else {
     weatherContainer.style.transform = 'translateY(100%)';
     weatherContainer.style.position = 'relative';
   }
 
-  // Handle about container scroll, only after the weather container has fully revealed itself
   const startAboutReveal = endWeatherReveal - windowHeight;
 
-  if (scrollPosition >= startAboutReveal && scrollPosition <= endWeatherReveal) {
+  if (scrollPosition <= startAboutReveal && scrollPosition >= endWeatherReveal) {
     aboutContainer.style.transform = 'translateY(0)';
     aboutContainer.style.position = 'fixed';
     aboutContainer.style.top = 0;

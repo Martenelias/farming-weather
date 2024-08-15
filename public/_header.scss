@@ -70,7 +70,7 @@ header {
   top: 0;
   right: 0;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   padding: 100px;
   @include flex-align;
   background-color: $black;
@@ -139,6 +139,9 @@ header {
   justify-content: center;
   ul {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     li {
       list-style: none;
       a {

@@ -108,7 +108,15 @@ const generateHtmlResponse = (weather = null, error = null) => {
       </div>
     </section>
     <section id="about" class="about-container">
-      <h3>About page</h3>
+      <div class="about-head-box"></div>
+      <div class="about-content">
+        <h3>About This App</h3>
+        <p>Farm Weather is a specialized weather application built with farmers in mind. We understand that accurate and timely weather information is crucial for managing your farm effectively. Whether you're planning to work in the fields, tend to your crops, or handle livestock, our app provides up-to-the-hour weather updates and short-term forecasts. This helps you make the best decisions, ensuring that your day on the farm runs smoothly, no matter the weather.
+        </p>
+        <p>
+        Our mission is to empower farmers with the knowledge they need to maximize productivity and minimize risks. With Farm Weather, you'll always be prepared for whatever Mother Nature has in store.</p>
+        <p>All powered by the trusted openweathermap API. This ensures that you receive reliable and precise data.</p>
+      </div>
     </section>
     <div class="menu">
       <ul>
