@@ -86,7 +86,7 @@ const generateHtmlResponse = (weather = null, error = null) => {
       <div class="overlay"></div>
       <div class="intro-text">
         <h2>Weather app for Farmers</h2>
-        <p class="intro-text-info">Weather app is made for farmers to keep track on oncoming weather, so they can plan their work.</p>
+        <p class="intro-text-info">Your Essential Forecast for Field Success. Weather app is made for farmers to keep track on oncoming weather, so they can plan their work.</p>
         <a href="#weather">EXPLORE</a>
       </div>
     </section>

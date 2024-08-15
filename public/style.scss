@@ -9,3 +9,50 @@
   box-sizing: border-box;
   @include font-text;
 }
+
+@media screen and (max-width: 768px) {
+  header {
+    padding: 40px 50px;
+  }
+  .about-container {
+    .about-head-box {
+      height: 300px;
+      transform: rotate(4deg);
+    }
+    .about-content {
+      padding: 100px 50px;
+      h3 {
+        margin-top: -50px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header h1 {
+    font-size: 26px;
+  }
+  header .hamburger {
+    &.active {
+      transform: translateX(20px);
+    }
+  }
+  .showcase .intro-text h2 {
+    font-size: 30px;
+  }
+  .showcase .intro-text .intro-text-info {
+    font-size: 16px;
+  }
+  .about-container .about-content {
+    padding: 50px 20px;
+    gap: 10px;
+    h3 {
+      font-size: 20px;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 12px;
+    }
+  }
+}

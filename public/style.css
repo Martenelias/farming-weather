@@ -345,6 +345,7 @@ header .hamburger.open span:nth-child(3) {
   color: #fff;
   z-index: 20;
   height: 100vh;
+  top: 0;
   right: 0;
   transform: translateY(100%);
   transition: top 0.3s ease, right 1.2s ease, transform 1.2s ease, position 1.2s ease;
@@ -613,6 +614,7 @@ header .hamburger.open span:nth-child(3) {
   color: #333;
   z-index: 18;
   height: 100vh;
+  top: 0;
   right: 0;
   transform: translateY(100%);
   overflow: hidden;
@@ -655,4 +657,46 @@ header .hamburger.open span:nth-child(3) {
   font-family: "Days One", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    padding: 40px 50px;
+  }
+  .about-container .about-head-box {
+    height: 300px;
+    transform: rotate(4deg);
+  }
+  .about-container .about-content {
+    padding: 100px 50px;
+  }
+  .about-container .about-content h3 {
+    margin-top: -50px;
+  }
+}
+@media screen and (max-width: 480px) {
+  header h1 {
+    font-size: 26px;
+  }
+  header .hamburger.active {
+    transform: translateX(20px);
+  }
+  .showcase .intro-text h2 {
+    font-size: 30px;
+  }
+  .showcase .intro-text .intro-text-info {
+    font-size: 16px;
+  }
+  .about-container .about-content {
+    padding: 50px 20px;
+    gap: 10px;
+  }
+  .about-container .about-content h3 {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  .about-container .about-content p {
+    font-size: 12px;
+  }
 }/*# sourceMappingURL=style.css.map */
