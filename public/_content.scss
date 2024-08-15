@@ -1,0 +1,106 @@
+@import './fonts-var-mixin';
+@import './header';
+
+.weather-container {
+  position: relative;
+  padding: 150px 0;
+  background-image: radial-gradient(circle, #858484, #636262, #464545, #333);
+  color: $white;
+  z-index: 20;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  transform: translateY(100%);
+  transition: top 0.3s ease, right 1.2s ease, transform 1.2s ease, position 1.2s ease;
+  &.active {
+    right: 300px;
+  }
+  .content {
+    @include flex-align;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    height: 100%;
+    form {
+      display: flex;
+      justify-content: center;
+      input {
+        height: 40px;
+        border: none;
+        border-radius: 5px 0 0 5px;
+        padding: 10px;
+      }
+      button {
+        height: 40px;
+        width: 40px;
+        background-color: $green;
+        color: $white;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        transition: 0.5s ease;
+        &:hover {
+          background-color: $white;
+          color: $green;
+        }
+      }
+    }
+    h2 .fa-map-marker-alt {
+      color: $green;
+    }
+    .hour-weather-container {
+      box-shadow: 5px 5px 15px $white;
+      .data-container {
+        padding-bottom: 20px;
+        border-bottom: 2px solid $white;
+        .today {
+          @include flex-align;
+          justify-content: center;
+          height: 100%;
+          .today-type {
+            height: 100%;
+            @include flex-align;
+            flex-direction: column;
+            justify-content: center;
+            div {
+              @include flex-align;
+              justify-content: center;
+              .main-temp {
+                font-size: 40px;
+                padding: 35px;
+              }
+            }
+          }
+          .today-detail {
+            padding: 20px 40px;
+            @include flex-align;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+          }
+        }
+      }
+      .hour-weather {
+        display: flex;
+        gap: 20px;
+        
+        .hourly-weather {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 10px;
+          
+          img {
+            width: 40px;
+            height: 40px;
+          }
+      
+          p {
+            margin: 5px 0;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}

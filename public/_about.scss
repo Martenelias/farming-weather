@@ -1,0 +1,44 @@
+@import './fonts-var-mixin';
+@import './header';
+
+.about-container {
+  position: relative;
+  background-color: $white;
+  color: $black;
+  z-index: 18;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  transform: translateY(100%);
+  overflow: hidden;
+  transition: top 0.3s ease, right 1.2s ease, transform 1.2s ease, position 1.2s ease;
+  &.active {
+    right: 300px;
+  }
+  .about-head-box {
+    height: 500px;
+    width: 120%;
+    margin-left: -50px;
+    margin-top: -180px;
+    background-color: $black;
+    transform: rotate(8deg);
+  }
+  .about-content {
+    height: 100%;
+    padding: 150px 100px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 30px;
+    h3 {
+      font-size: 30px;
+      margin-top: -100px;
+      margin-bottom: 50px;
+    }
+    p {
+      font-size: 20px;
+      line-height: 1.5;
+    }
+  }
+}
