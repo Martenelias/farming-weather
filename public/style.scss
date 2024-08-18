@@ -55,4 +55,28 @@
       font-size: 12px;
     }
   }
+  .weather-container {
+    .content .hour-weather-container {
+      width: 100vw;
+      box-shadow: none;
+      .data-container .today {
+        .today-type {
+          div {
+            .main-temp {
+              font-size: 20px;
+              padding: 10px;
+            }
+          }
+        }
+        .today-detail {
+          padding: 3px 3px;
+        }
+      }
+      .hour-weather {
+        width: 100vw;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  }
 }
