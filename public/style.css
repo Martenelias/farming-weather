@@ -699,4 +699,20 @@ header .hamburger.open span:nth-child(3) {
   .about-container .about-content p {
     font-size: 12px;
   }
+  .weather-container .content .hour-weather-container {
+    width: 100vw;
+    box-shadow: none;
+  }
+  .weather-container .content .hour-weather-container .data-container .today .today-type div .main-temp {
+    font-size: 20px;
+    padding: 10px;
+  }
+  .weather-container .content .hour-weather-container .data-container .today .today-detail {
+    padding: 3px 3px;
+  }
+  .weather-container .content .hour-weather-container .hour-weather {
+    width: 100vw;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }/*# sourceMappingURL=style.css.map */
